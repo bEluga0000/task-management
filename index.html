@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task management Application</title>
+    <link rel="icon" href="task.ico">
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <div>
+      <form action="">
+        <div class="inputField">
+          <label for="title">Title</label>
+          <input type="text" placeholder="Task Title" id="title" name="title" />
+        </div>
+        <div class="inputField">
+          <label for="desc">Description</label>
+          <input
+            type="text"
+            placeholder="Task Description"
+            id="desc"
+            name="desc"
+          />
+        </div>
+        <div style="display: flex; width: 100%; justify-content: space-between;">
+          <div class="inputField">
+            <label for="dueDate">Due Date</label>
+            <input
+              type="date"
+              placeholder="Due Date"
+              min="today"
+              id="dueDate"
+            />
+          </div>
+          <div class="inputField">
+            <label for="priority">Select Priority</label>
+            <select name="priority" id="priority">
+              <option value="low" selected>Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" id="btn-sub" class="btn">Submit</button>
+      </form>
+      <div>
+        <h3 id="errorMsg"></h3>
+      </div>
+    </div>
+    <div id="filterDiv">
+      <div>
+        <label for="statusBtn">Status: </label>
+      <select name="" id="statusBtn">
+        <option value="no" selected>Remove</option>
+        <option value="false">Pending</option>
+        <option value="true">Completed</option>
+      </select>
+      </div>
+      <div>
+        <label for="Due Date">Due:</label>
+      <select name="" id="dueBtn">
+        <option value="no">Remove</option>
+        <option value="1">Today</option>
+        <option value="7">Next 7 days</option>
+      </select>
+      </div>
+      <div>
+        <label for="priorityBtn">Priority: </label>
+      <select name="" id="priorityBtn">
+        <option value="no">Remove</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      </div>
+      
+      <button id="filterBtn" class="btn">Filter</button>
+    </div>
+    <div>
+      <h3 id="showNoTasks"></h3>
+    </div>
+    <div id="tasks">
+      <!-- <div>
+            <h1 id="titleShow">
+
+            </h1>
+            <h3 id="descShow">
+
+            </h3>
+            <p id="date-priority-show">
+
+            </p>
+        </div> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/cuid/dist/browser-cuid.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

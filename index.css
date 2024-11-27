@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+form{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid white; */
+    gap: 1rem;
+}
+.inputField{
+    display: flex;
+    flex-direction: column;
+}
+.inputField input,select{
+    font-size: 1.2rem;
+    padding: 5px;
+    outline: none;
+    border: 1px solid wheat;
+    border-radius: 10px;
+}
+.btn{
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 2rem;
+    outline: none;
+    border: none;
+}
+#errorMsg{
+    color: red;
+}
+.btn:hover{
+    border: 1px solid snow;
+    /* translate: scale(1.2rem); */
+}
+.inputField label{
+    font-size: 1.2rem;
+    color: aliceblue;
+    font-weight: 700;
+}
+#filterDiv{
+    display: flex;
+    justify-content: space-between;
+}
+#filterDiv div label{
+    font-size: 1.2rem;
+    color: aliceblue;
+    font-weight: 700;
+}
+#filterDiv select{
+    font-size: 1.2rem;
+        padding: 2px;
+        outline: none;
+        border: 1px solid wheat;
+        border-radius: 10px;
+}
+
+#tasks div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+#tasks div div{
+    display: flex;
+    flex-direction: row;
+    /* margin-bottom: 0.5rem; */
+}
+#tasks div div button{
+    font-size: 1rem;
+    padding: 5px;
+    cursor: pointer;
+    /* display: none; */
+}
+#tasks div h1{
+    font-size: 2rem;
+}
+#tasks div h3{
+    font-size: 1.5rem;
+}
+#tasks div p{
+    font-size: 1.2rem;
+}
