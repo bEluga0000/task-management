@@ -19,7 +19,7 @@ window.onload = () => {
         if (parsedTasks.length == 0)
             document.getElementById("showNoTasks").textContent = "No tasks are present as of now"
         parsedTasks.sort((a, b) => new Date(a.date) - new Date(b.date))
-        console.log(parsedTasks)
+        // console.log(parsedTasks)
         parsedTasks.forEach((task, key) => {
             const onetask = document.createElement("div")
             onetask.setAttribute("id", task.id)
@@ -148,14 +148,14 @@ document.getElementById("btn-sub").addEventListener("click", (e) => { handelSubm
 const handelDeleteBtn = (id) => {
     //todo need to show the modal telling that are you sure u want to delete this
     let stringifyTasks = localStorage.getItem("tasks")
-    console.log(" i am runnign")
+    // console.log(" i am runnign")
     const parsedTasks = JSON.parse(stringifyTasks)
     const taskDeleted = parsedTasks.filter((task, key) => {
         return task.id != id
     })
     stringifyTasks = JSON.stringify(taskDeleted)
     localStorage.setItem("tasks", stringifyTasks)
-    console.log(parsedTasks)
+    // console.log(parsedTasks)
     if(taskDeleted.length == 0)
         document.getElementById("showNoTasks").textContent = "No tasks are present as of now"
     // delete the chid with id of the clicked tasks
@@ -170,7 +170,9 @@ const handelEditBtn = (id) => {
     let duePriority = duePriorityTag.textContent
     let [due, priority] = duePriority.split(" ").filter((val) => val != "")
     due = due.split("-").reverse().join("-")
-    console.log(title, desc, due, priority)
+    const btnsDiv = onetask.querySelector("div")
+    btnsDiv.style.display = "none"
+    // console.log(title, desc, due, priority)
     // here i need to hide the elements and need to add the form with the options to change the title  desc and 
     titleTag.style.display = "none"
     descTag.style.display = "none"
@@ -207,6 +209,7 @@ const handelEditBtn = (id) => {
     divIn.appendChild(descIn)
     divIn.appendChild(dateIn)
     divIn.appendChild(priorityIn)
+    // console.log("last child"+onetask.lastChild)
     // need to add two buttons 
     // btn save
     const saveBtn = document.createElement('button')
@@ -217,6 +220,7 @@ const handelEditBtn = (id) => {
         titleTag.style.display = "block"
         descTag.style.display = "block"
         duePriorityTag.style.display = "block"
+        btnsDiv.style.display = "flex"
         titleTag.textContent = titleIn.value
         descTag.textContent = descIn.value
         // need to add the priority
@@ -240,16 +244,17 @@ const handelEditBtn = (id) => {
         titleTag.style.display = "block"
         descTag.style.display = "block"
         duePriorityTag.style.display = "block"
+        btnsDiv.style.display = "flex"
         onetask.removeChild(divIn)
     })
     divIn.appendChild(saveBtn)
     divIn.appendChild(cancelBtn)
-    onetask.appendChild(divIn)
+    onetask.insertBefore(divIn,onetask.lastChild)
 }
 const handelMarkBtn = (id) => {
     let stringifyTasks = localStorage.getItem("tasks")
     let parseTasks = JSON.parse(stringifyTasks)
-    console.log(id)
+    // console.log(id)
     parseTasks = parseTasks.map((task, key) => {
         return task.id == id ? { ...task, completed: true } : task
     })
@@ -261,7 +266,7 @@ const handelMarkBtn = (id) => {
 // first button is  status works completed or the pending
 const filterBtn = document.getElementById("filterBtn")
 filterBtn.addEventListener("click", () => {
-    console.log("Clicked")
+    // console.log("Clicked")
     const status = document.getElementById("statusBtn").value
     const due = document.getElementById("dueBtn").value
     const priority = document.getElementById("priorityBtn").value
@@ -274,7 +279,7 @@ filterBtn.addEventListener("click", () => {
     const sStatus = status == "no" ? null : status == "false" ? false : true
     const stringifyTasks = localStorage.getItem("tasks")
     const parsedTasks = JSON.parse(stringifyTasks)
-    console.log(sDate)
+    // console.log(sDate)
     let showTasks = parsedTasks.filter((task, key) => {
         const priorityMatch = sPriority === null || task.priority == sPriority
         const statusmatch = sStatus === null || task.completed == sStatus
